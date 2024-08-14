@@ -7,16 +7,13 @@ export default {
         ibm: ['IBM Plex Mono', 'monospace'],
         roboto: ['Roboto Mono', 'monospace'],
       },
+      spacing: {
+        "lesson-nav-h": "var(--nav-lesson-h)",
+        "lesson-container" : "calc(100vh - var(--nav-lesson-h))"
+      }
     },
-    colors: {
-      'text-primary': '#150c0f',
-      background: '#fcfafb',
-      primary: '#b05a77',
-      secondary: '#d399ad',
-      accent: '#c76c8b',
-      black: '#111111',
-      white: '#000000',
-    },
+    
   },
+  
   plugins: [],
 };
