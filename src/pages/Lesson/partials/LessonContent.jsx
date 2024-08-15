@@ -6,7 +6,7 @@ export default function LessonContent() {
   return (
     <div className="col-span-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-secondary">
       <LessonDetail />
-      {/* <LessonTest /> */}
+      <LessonTest />
     </div>
   );
 }
