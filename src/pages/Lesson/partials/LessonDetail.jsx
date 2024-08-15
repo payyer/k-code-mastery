@@ -5,7 +5,7 @@ import ReactPlayer from "react-player/lazy";
 export default function LessonDetail() {
   return (
     <>
-      <div className="h-[458px] flex justify-center ">
+      <div className="h-[458px] flex justify-center">
         <ReactPlayer
           url="https://www.youtube.com/watch?v=hO2FvV09F-A"
           playing
@@ -14,7 +14,7 @@ export default function LessonDetail() {
           height={"100%"}
           width={"100%"}
           playIcon={
-            <FaCirclePlay className="text-[80px] bg-green-200 rounded-full overflow-hidden" />
+            <FaCirclePlay className="text-[80px] bg-primary rounded-full overflow-hidden" />
           }
         />
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const answer = [
@@ -27,32 +27,39 @@ const answer = [
 ];
 
 export default function LessonTest() {
-  function RadioInput({ answer, value }) {
+  const [selectAnswer, setSelectAnswer] = useState();
+  function RadioInput({ id, value, answer }) {
     return (
       <>
         <label
-          htmlFor={value}
-          className="py-2 px-4 border border-black rounded-lg"
+          htmlFor={id}
+          className={`${
+            selectAnswer === id
+              ? "border-secondary text-primary"
+              : "border-black"
+          }  py-3 px-4 border-2 rounded-lg hover:bg-primary hover:bg-opacity-50 cursor-pointer`}
         >
           {answer}
         </label>
         <input
-          id={value}
+          id={id}
           {...register("answer")}
           type="radio"
           value={value}
+          onChange={() => setSelectAnswer(id)}
           className="hidden"
         />
       </>
     );
   }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log({ data });
 
   return (
     <div className="p-12">
@@ -67,10 +74,19 @@ export default function LessonTest() {
       >
         {answer.map((item) => {
           return (
-            <RadioInput key={item.id} answer={item.answer} value={item.value} />
+            <RadioInput
+              key={item.id}
+              answer={item.answer}
+              id={item.id}
+              value={item.value}
+            />
           );
         })}
-        <input type="submit" className="bg-blue-600 rounded-lg py-2 px-1" />
+        <input
+          type="submit"
+          className="font-medium text-white bg-primary hover:bg-opacity-80 cursor-pointer rounded-lg py-2 px-1"
+          value={"Submit"}
+        />
       </form>
     </div>
   );
