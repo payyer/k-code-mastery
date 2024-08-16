@@ -1,18 +1,18 @@
-import LessonItem from './LessonItem';
-
 export default function ListLesson() {
   return (
-    <section className="flex flex-col gap-2 ">
-      <h3 className="text-xl font-medium">Noi dung khoa hoc</h3>
-      <p>
-        Gom <span className="font-medium">28</span> bai hoc
-      </p>
-      {/* List bai hoc */}
-      <div className="flex flex-col border">
-        <LessonItem />
-        <LessonItem />
-        <LessonItem />
+    <div className="relative md:col-span-2">
+      <div className="absolute shadow-custom-box grid md:grid-cols-2 gap-4 top-0 bg-white rounded-lg p-4 w-full">
+        <ul className="grid gap-4">
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+        </ul>
+        <ul className="grid gap-4">
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+          <li>Bài 1: Lorem ipsum dolor sit amet, adipisicing elit.</li>
+        </ul>
       </div>
-    </section>
+    </div>
   );
 }
