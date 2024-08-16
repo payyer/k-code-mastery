@@ -4,28 +4,38 @@ import logoBlack from "../../assets/icon/logo-black.svg";
 
 import avatar from "../../assets/img/avatar.png";
 import "./style.css";
-import HomeSearch from "./partials/navbar/Search";
-import HomeLogo from "./partials/navbar/Logo";
-import HomeAvatar from "./partials/navbar/Avatar";
-import HomeTab from "./partials/navbar/Tab";
+import HomeNavBar from "./partials/navbar/Navbar";
 import HomeTabList from "./partials/tablist/Tab";
 import HomeLesson from "./partials/lession/Lesson";
+import HomeUserActionMenu from "./partials/user/user";
 export default function Home() {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   return (
     <div>
-      <nav class="nav-bar">
-        <HomeLogo />
-        <HomeTab />
-        <HomeSearch />
-        <HomeAvatar />
-      </nav>
+      <div className="relative">
+        <HomeNavBar />
+      </div>
       <nav className="main-container">
         <HomeTabList />
         <div className="main-lesson">
           <div className="bigTitle">Popular this week</div>
           <div className="grid-container">
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
+            <HomeLesson />
             <HomeLesson />
             <HomeLesson />
             <HomeLesson />

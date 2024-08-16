@@ -4,8 +4,6 @@ export default function HomeTab() {
     <div>
       <div className="homeTab">
         <a href="#">Home</a>
-        <a href="#">Home</a>
-        <a href="#">Home</a>
       </div>
     </div>
   );
