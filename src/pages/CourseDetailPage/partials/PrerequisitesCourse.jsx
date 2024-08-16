@@ -7,13 +7,9 @@ export default function PrerequisitesCourse() {
           <div className="w-2 h-2 bg-primary rounded-full"></div> No prior
           knowledge required
         </li>
-        <li className=" flex items-center gap-2 text-text-secondary">
-          <div className="w-2 h-2 bg-primary rounded-full"></div> No prior
-          knowledge required
-        </li>
       </ul>
-      <button className="flex items-center justify-center py-2 bg-primary rounded-lg text-white font-bold">
-        BUY NOW
+      <button className="flex items-center justify-center py-2 bg-primary rounded-lg text-white font-bold shadow-shadow-b hover:bg-opacity-90">
+        BUY NOW 489.000$
       </button>
     </div>
   );
