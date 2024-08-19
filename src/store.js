@@ -1,8 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './features/counter/counterSlice';
+import { apiSlice } from './services/apiSlice';
+import courseReducer from './features/course/courseSlice';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    course: courseReducer
   },
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware().concat(apiSlice.middleware);
+  },
+
 });
+setupListeners(store.dispatch);
