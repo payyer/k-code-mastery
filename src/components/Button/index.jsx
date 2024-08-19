@@ -3,7 +3,8 @@ export const ButtonPrimary = ({ children, onClick, className, ...props }) => {
     <button
       className={`${className} bg-accent rounded-lg py-1 px-3 hover:bg-secondary text-text-primary font-medium `}
       onClick={onClick}
-      {...props}>
+      {...props}
+    >
       {children}
     </button>
   );
