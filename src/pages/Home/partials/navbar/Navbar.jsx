@@ -2,14 +2,11 @@ import React from "react";
 import HomeSearch from "../navbar/Search";
 import HomeLogo from "../navbar/Logo";
 import HomeAvatar from "../navbar/Avatar";
-
-import avatar from "../../../../assets/img/creator/creator.png";
-import { useState } from "react";
-import HomeUserActionMenu from "../user/user";
+import styleHome from "../../styleHome.module.css";
 export default function HomeNavBar() {
   return (
     <div>
-      <div className="nav-bar">
+      <div className={styleHome.navBar}>
         <HomeLogo />
         <HomeSearch />
         <HomeAvatar />

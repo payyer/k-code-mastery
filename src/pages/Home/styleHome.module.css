@@ -5,7 +5,7 @@ body {
   top: 0;
 }
 
-.nav-bar {
+.navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,7 +30,7 @@ body {
   width: 240px;
 }
 
-.search-input {
+.searchInput {
   outline: none;
   background-color: transparent;
   margin-left: var(--padding);
@@ -83,7 +83,7 @@ body {
   color: #6f7072;
 }
 
-.main-container {
+.mainContainer {
   max-width: 1152px;
   margin: auto;
   display: flex;
@@ -91,7 +91,7 @@ body {
   gap: 10px;
 }
 
-.grid-container {
+.gridContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -114,7 +114,7 @@ body {
   border-radius: 10px;
 }
 
-.main-lesson {
+.mainLesson {
   padding-left: 32px;
   padding-right: 32px;
   display: flex;
@@ -183,7 +183,7 @@ body {
   cursor: pointer;
 }
 
-.tabList button.active {
+.active {
   color: blue;
   text-decoration: underline;
   text-underline-offset: 10px;
@@ -210,7 +210,7 @@ body {
   cursor: pointer;
 }
 
-.overflow-wrap {
+.overflowWrap {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -229,12 +229,12 @@ body {
   gap: 10px;
 }
 
-.small-text {
+.smallText {
   font-size: 10px;
   color: rgba(0, 0, 0, 0.54);
 }
 
-.border-small-icon {
+.borderSmallIcon {
   display: flex;
   background: #edf8ff;
   border-radius: 32px;
@@ -244,7 +244,7 @@ body {
 
 /* Tablet (width from 768px to 1024px) */
 @media screen and (max-width: 1024px) and (min-width: 768px) {
-  .nav-bar {
+  .navBar {
     height: 50px;
     padding: 12px;
   }
@@ -267,7 +267,7 @@ body {
     gap: 15px;
   }
 
-  .grid-container {
+  .gridContainer {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -286,7 +286,7 @@ body {
 
 /* Mobile (width less than 768px) */
 @media screen and (max-width: 767px) {
-  .nav-bar {
+  .navBar {
     height: 50px;
     padding: 10px;
   }
@@ -329,7 +329,7 @@ body {
   }
 
   .container,
-  .main-container {
+  .mainContainer {
     padding: 0 10px;
   }
 }
