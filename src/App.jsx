@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import linkPage from './utils/navigate';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import linkPage from "./utils/navigate";
 
 function App() {
   return (

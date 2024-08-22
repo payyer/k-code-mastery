@@ -3,7 +3,7 @@ import React from "react";
 export default function AdminInfo() {
   return (
     <div>
-      <section className="flex gap-2 mb-2 items-center">
+      <section className="flex gap-2 mb-2 items-center p-2 justify-center">
         <div className="w-10 h-10 rounded-full overflow-hidden">
           <img
             src="https://static.ybox.vn/2022/4/5/1649990881847-thi%E1%BA%BFt%20k%E1%BA%BF%20kh%C3%B4ng%20t%C3%AAn%20(3).png"

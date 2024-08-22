@@ -1,7 +1,7 @@
 import Admin from "../pages/Admin/Admin";
-import { CourseDetail } from "../pages/CourseDetailPage";
 import Home from "../pages/Home/Home";
-import Lesson from "../pages/Lesson";
+import CourseDetail from "../pages/CourseDetailPage/CrouseDetail";
+import Lesson from "../pages/Lesson/Lesson";
 
 const linkPage = [
   { link: "/", element: <Home /> },

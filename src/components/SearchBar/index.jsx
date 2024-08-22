@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar({ className, placeholder, ...props }) {
   return (
-    <div className="relative group">
+    <div className="relative group w-full">
       <input
         type="text"
         placeholder={placeholder}

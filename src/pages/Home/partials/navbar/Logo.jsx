@@ -5,7 +5,7 @@ import HomeTab from "../navbar/Tab";
 export default function HomeLogo() {
   return (
     <div>
-      <div class="logo">
+      <div className="logo">
         <img src={logoBlack} alt="logo" />
         <HomeTab />
       </div>
