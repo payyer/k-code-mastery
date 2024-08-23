@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import avatar from "../../../../assets/img/avatar.png";
 import HomeUserActionMenu from "../user/user";
+import styles from "../../styleHome.module.css";
+import cls from "classnames";
 export default function HomeAvatar() {
   // Đổi tên `onclick` thành `onClick` cho chuẩn React
   const [isOpen, setIsOpen] = useState(false); // Sửa tên hàm thành `setIsOpen` và giá trị mặc định là `false`
@@ -10,10 +12,13 @@ export default function HomeAvatar() {
   }
   return (
     <div>
-      <div className="avatarUser relative" onClick={handleAvatar}>
+      <div
+        className={cls(styles.avatarUser, styles.relative)}
+        onClick={handleAvatar}
+      >
         {" "}
         {/* Đổi class thành className */}
-        <img src={avatar} alt="avatar" className="avatar" />
+        <img src={avatar} alt="avatar" className={styles.avatar} />
         {isOpen && ( // Render menu chỉ khi `isOpen` là true
           <HomeUserActionMenu />
         )}
