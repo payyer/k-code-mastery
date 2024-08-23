@@ -1,9 +1,15 @@
-import Home from '../pages/Home';
-import { Test } from '../pages/Test';
+import Admin from "../pages/Admin/Admin";
+import Home from "../pages/Home/Home";
+import CourseDetail from "../pages/CourseDetailPage/CrouseDetail";
+import Lesson from "../pages/Lesson/Lesson";
+import AccountAccess from "../pages/AccountAccess/AccountAccess";
 
 const linkPage = [
-  { link: '/', element: <Home /> },
-  { link: '/test', element: <Test /> },
+  { link: "/", element: <Home /> },
+  { link: "/course/:id", element: <CourseDetail /> },
+  { link: "/lesson/:id", element: <Lesson /> },
+  { link: "/admin", element: <Admin /> },
+  { link: "/account", element: <AccountAccess /> },
 ];
 
 export default linkPage;
