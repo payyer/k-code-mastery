@@ -1,9 +1,8 @@
-import "./style.css";
+// import "./style.css";
 import HomeNavBar from "./partials/navbar/Navbar";
 import HomeTabList from "./partials/tablist/Tab";
 import cls from "classnames";
 import styleHome from "./styleHome.module.css";
-import HomeNavBar from "./partials/navbar/Navbar";
 import HomeLesson from "./partials/lession/Lesson";
 
 export default function Home() {
