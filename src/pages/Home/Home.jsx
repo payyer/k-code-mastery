@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import cls from "classnames";
-import styleHome from "./styleHome.module.css";
+// import "./style.css";
 import HomeNavBar from "./partials/navbar/Navbar";
 import HomeTabList from "./partials/tablist/Tab";
+import cls from "classnames";
+import styleHome from "./styleHome.module.css";
 import HomeLesson from "./partials/lession/Lesson";
 
 export default function Home() {
-  const dispatch = useDispatch();
   return (
     <div>
       <div className={styleHome.relative}>

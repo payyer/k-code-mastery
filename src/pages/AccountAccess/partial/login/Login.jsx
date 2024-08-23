@@ -44,17 +44,6 @@ export default function Login() {
           />
           <button className={cls(styles.button, styles.btn)}>Login</button>
           <span>or use your account</span>
-          <div className={styles.socialContainer}>
-            <a href="#" className={styles.socialContainer}>
-              <FaFacebook />
-            </a>
-            <a href="#" className={styles.socialContainer}>
-              <FaGoogle />
-            </a>
-            <a href="#" className={styles.socialContainer}>
-              <FaInstagram />
-            </a>
-          </div>
         </form>
       </div>
     </div>

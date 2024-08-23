@@ -60,17 +60,6 @@ export default function Register() {
           />
           <button className={cls(styles.button, styles.btn)}>Register</button>
           <span>or use your account</span>
-          <div className={styles.socialContainer}>
-            <a href="#" className={styles.social}>
-              <FaFacebook />
-            </a>
-            <a href="#" className={styles.social}>
-              <FaGoogle />
-            </a>
-            <a href="#" className={styles.social}>
-              <FaInstagram />
-            </a>
-          </div>
         </form>
       </div>
     </div>
