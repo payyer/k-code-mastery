@@ -27,7 +27,11 @@ export default function Register() {
   return (
     <div>
       <div className={cls(styles.formContainer, styles.registerContainer)}>
-        <form action="#" onSubmit={handleSubmit}>
+        <form
+          action="#"
+          onSubmit={handleSubmit}
+          className="bg-white flex flex-col items-center justify-center p-0 px-12 h-full text-center"
+        >
           <h1 className={styles.h1}>Register here</h1>
           {error && <p className="text-red-500">{error}</p>}
           <input

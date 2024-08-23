@@ -6,7 +6,6 @@ import HomeTabList from "./partials/tablist/Tab";
 import HomeLesson from "./partials/lession/Lesson";
 
 export default function Home() {
-  const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   return (
     <div>

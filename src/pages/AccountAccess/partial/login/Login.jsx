@@ -16,7 +16,11 @@ export default function Login() {
   return (
     <div>
       <div className={cls(styles.formContainer, styles.loginContainer)}>
-        <form action="#" onSubmit={submitForm}>
+        <form
+          action="#"
+          onSubmit={submitForm}
+          className="bg-white flex flex-col items-center justify-center p-0 px-12 h-full text-center"
+        >
           <h1 className={styles.h1}>Login here</h1>
           {error && <p className="text-red-500">{error}</p>}
           <input
