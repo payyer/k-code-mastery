@@ -3,7 +3,7 @@ import svgUserImage from "../../../assets/profile/user_placeholder.svg";
 import svgUserEdit from "../../../assets/profile/edit.svg";
 import svgUserLogout from "../../../assets/profile/logout-white.svg";
 const user = [];
-export default function Card() {
+export default function Card({ setActiveTab }) {
   return (
     <div>
       <div className="bg-blue-600 p-8 h-screen space-y-10" id="profile-card">
@@ -12,7 +12,12 @@ export default function Card() {
           <p className="text-2xl font-bold">NgoThanhY</p>
           <div className="flex flex-col gap-4">
             <hr />
-            <div className="flex gap-2 justify-start items-center cursor-pointer">
+            <div
+              className="flex gap-2 justify-start items-center cursor-pointer"
+              onClick={() => {
+                setActiveTab(false);
+              }}
+            >
               <img src={svgUserEdit} alt="" class="icon-edit" />
               <p>Edit your profile</p>
             </div>
