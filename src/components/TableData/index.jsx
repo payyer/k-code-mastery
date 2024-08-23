@@ -70,8 +70,7 @@ export default function TableData() {
                     <td className="px-2 font-bold">{index + 1}</td>
                     <td className="px-2">{val?.title}</td>
                     <td className="px-2">{val?.lecturer}</td>
-                    {/* <td className="px-2">{val.isTopCourse}</td> */}
-                    <td className="px-2">{val?.category?.name}</td>
+                    <td className="px-2">{val?.categoryDTO?.name}</td>
                     <td className="px-2">{formatDate(val?.createDate)}</td>
                     <td className="px-2">{val?.price}</td>
                     <td className="px-2 relative">
@@ -79,7 +78,6 @@ export default function TableData() {
                         onClick={(e) => {
                           handleOption(e, val?.id);
                         }}
-                        onBlur={(e) => handleOption(e, val?.id)}
                         className=" bg-yellow-300 font-medium bg-opacity-70 hover:bg-opacity-50 rounded-lg py-1 px-2"
                       >
                         Option

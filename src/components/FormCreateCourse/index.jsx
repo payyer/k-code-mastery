@@ -6,7 +6,7 @@ import createFileList from "../../utils/createFile";
 
 export default function FormCreateCourse({ isCreate }) {
   const courseToUpdate = useSelector((state) => state.course.courseUpdate);
-
+  console.log({ courseToUpdate });
   const {
     register,
     handleSubmit,
@@ -95,7 +95,7 @@ export default function FormCreateCourse({ isCreate }) {
           Category
         </label>
         <select
-          defaultValue={courseToUpdate ? courseToUpdate.category.name : ""}
+          defaultValue={courseToUpdate ? courseToUpdate.categoryDTO.name : ""}
           className="p-2 border border-gray-400 focus:outline-primary rounded-lg"
           id="category"
           {...register("categoryId", {
@@ -107,7 +107,7 @@ export default function FormCreateCourse({ isCreate }) {
           })}
         >
           <option value="">Select a category</option>
-          <option value="csharp">C#</option>
+          <option value="Java">Java</option>
           <option value="java">Java</option>
         </select>
         {errors.categoryId && (
