@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import styleHome from "../../styleHome.module.css";
 export default function HomeTabList() {
   const [selectedTab, setSelectedTab] = useState(null);
 
@@ -9,11 +9,11 @@ export default function HomeTabList() {
 
   return (
     <div>
-      <div className="tabList">
+      <div className={styleHome.tabList}>
         {["Python", "JavaScript", "HTML", "CSS", "C++", "C#"].map((tab) => (
           <button
             key={tab}
-            className={selectedTab === tab ? "active" : ""}
+            className={selectedTab === tab ? styleHome.active : ""}
             onClick={() => handleTabClick(tab)}
           >
             {tab}
