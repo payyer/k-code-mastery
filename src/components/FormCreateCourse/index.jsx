@@ -1,12 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { FaCameraRetro } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import createFileList from "../../utils/createFile";
+import { useGetCategoryQuery } from "../../services/category/categoryApi";
 
 export default function FormCreateCourse({ isCreate }) {
   const courseToUpdate = useSelector((state) => state.course.courseUpdate);
-  console.log({ courseToUpdate });
+  const { data: categoryData } = useGetCategoryQuery();
+
   const {
     register,
     handleSubmit,
@@ -107,8 +109,9 @@ export default function FormCreateCourse({ isCreate }) {
           })}
         >
           <option value="">Select a category</option>
-          <option value="Java">Java</option>
-          <option value="java">Java</option>
+          {categoryData.data.map((item) => {
+            return <option value={item.name}>{item.name}</option>;
+          })}
         </select>
         {errors.categoryId && (
           <span className="text-red-500">{errors.categoryId.message}</span>

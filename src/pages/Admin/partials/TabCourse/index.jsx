@@ -4,9 +4,12 @@ import TableData from "../../../../components/TableData";
 import SearchBar from "../../../../components/SearchBar";
 import Popup from "../../../../components/Popup";
 import { FaPlus } from "react-icons/fa";
+import { useGetCategoryQuery } from "../../../../services/category/categoryApi";
 
 export default function TabCourse() {
   const [openCreate, setOpenCreate] = useState(false);
+  const { data: categoryList } = useGetCategoryQuery();
+
   return (
     <>
       <div className="p-4 flex-1 min-h-screen">
@@ -23,6 +26,16 @@ export default function TabCourse() {
           </button>
         </div>
 
+        <select name="" id="" className="h-10 outline-primary">
+          <option value={""}>All</option>
+          {categoryList?.data?.map((item, index) => {
+            return (
+              <option key={index} value={item.name}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
         <TableData />
       </div>
       {openCreate ? (

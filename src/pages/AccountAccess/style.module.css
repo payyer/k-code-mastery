@@ -122,17 +122,6 @@ a:hover {
   left: 40px;
   opacity: 1;
 }
-form {
-  background-color: #fff;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-}
 .formContainer input {
   background-color: #eee;
   border-radius: 10px;

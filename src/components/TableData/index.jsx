@@ -22,6 +22,7 @@ export default function TableData() {
   const [openPopup, setOpenPopup] = useState(false);
   const [showLesson, setShowLesson] = useState(null);
   const { data, isFetching } = useGetCourseQuery();
+
   const dispatch = useDispatch();
   const handleShowLesson = (e, id) => {
     e.stopPropagation();
@@ -43,7 +44,7 @@ export default function TableData() {
 
   return (
     <>
-      <table className={` w-full mt-2`}>
+      <table className={`w-full mt-2`}>
         <thead>
           <tr className="grid-cols-8 border border-gray-400 mb-2">
             {arrayTitle?.map((title, index) => {
@@ -163,7 +164,7 @@ export default function TableData() {
                           colSpan={7}
                           className="text-center h-10 bg-gray-100"
                         >
-                          Haven't any lesson
+                          No lesson available
                         </td>
                       </tr>
                     </>
