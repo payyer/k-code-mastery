@@ -8,5 +8,5 @@ const baseQuery = fetchBaseQuery({
 export const apiSlice = createApi({
     baseQuery: baseQuery,
     endpoints: builder => ({}),
-    tagTypes: ['category']
+    tagTypes: ['category', 'lesson', 'course']
 })

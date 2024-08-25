@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { finishUPdateCourse } from "../../features/course/courseSlice";
 import { finishUPdateCategory } from "../../features/category/categorySlice";
+import { finishUpdateLesson } from "../../features/lesson/lessonSlice";
 
 export default function Popup({ children, closePopup }) {
   const dispatch = useDispatch();
@@ -9,6 +10,7 @@ export default function Popup({ children, closePopup }) {
     closePopup(false);
     dispatch(finishUPdateCourse());
     dispatch(finishUPdateCategory());
+    dispatch(finishUpdateLesson());
   };
   return (
     <div

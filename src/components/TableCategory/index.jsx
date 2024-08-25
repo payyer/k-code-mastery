@@ -176,7 +176,9 @@ export default function TableCategory() {
       {openPopup ? (
         <Popup
           closePopup={setOpenPopup}
-          children={<FormCreateCategory isCreate={false} />}
+          children={
+            <FormCreateCategory fnClosePopup={setOpenPopup} isCreate={false} />
+          }
         />
       ) : null}
     </>

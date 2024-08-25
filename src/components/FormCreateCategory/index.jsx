@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import {
   useAddCategoryMutation,
-  useDeleteCategoryMutation,
   useEditCategoryMutation,
 } from "../../services/category/categoryApi";
 import { useSelector } from "react-redux";

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setSearchCategory } from "../../features/category/categorySlice";
+import { setSearchValueCourse } from "../../features/course/courseSlice";
 
 export default function SearchBar({ className, placeholder, isCourse }) {
   const [searchValue, setSearchValue] = useState("");
@@ -11,6 +12,7 @@ export default function SearchBar({ className, placeholder, isCourse }) {
     if (!isCourse) {
       dispatch(setSearchCategory(searchValue));
     }
+    dispatch(setSearchValueCourse(searchValue));
   }, [dispatch, searchValue]);
 
   return (

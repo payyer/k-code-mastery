@@ -3,10 +3,17 @@ import Popup from "../Popup";
 import { useDispatch } from "react-redux";
 import { startUpdateCourse } from "../../features/course/courseSlice";
 import FormCreateCourse from "../FormCreateCourse";
-import { useGetCourseQuery } from "../../services/course/courseApi";
+import {
+  useDeleteCourseMutation,
+  useGetCourseQuery,
+} from "../../services/course/courseApi";
 import { formatDate } from "../../utils/createFile";
 import { CiEdit } from "react-icons/ci";
 import { FaX } from "react-icons/fa6";
+import { useDeleteLessonMutation } from "../../services/lesson/lessonApi";
+import FormCreateLesson from "../FormCreateLesson";
+import { startUpdateLesson } from "../../features/lesson/lessonSlice";
+import { toast } from "react-toastify";
 const arrayTitle = [
   "No",
   "Title",
@@ -17,11 +24,18 @@ const arrayTitle = [
   "Option",
 ];
 
-export default function TableData() {
+export default function TableData({ pagination }) {
   const [openOption, setOpenOption] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
+  const [editPopup, setEditPopup] = useState(false);
   const [showLesson, setShowLesson] = useState(null);
-  const { data, isFetching } = useGetCourseQuery();
+
+  const [openLessonPopup, setOpenLessonPopup] = useState(false);
+
+  const { data, isFetching } = useGetCourseQuery(pagination);
+
+  const [deleteLesson] = useDeleteLessonMutation();
+  const [deleteCourse] = useDeleteCourseMutation();
 
   const dispatch = useDispatch();
   const handleShowLesson = (e, id) => {
@@ -29,6 +43,7 @@ export default function TableData() {
     if (showLesson === id) return setShowLesson(null);
     setShowLesson(id);
   };
+
   const handleOption = (e, id) => {
     e.stopPropagation();
     if (openOption === id) return setOpenOption(null);
@@ -40,6 +55,37 @@ export default function TableData() {
     dispatch(startUpdateCourse(course));
     setOpenOption(null);
     setOpenPopup(true);
+  };
+
+  const handleEditPopUp = (e, lesson, courseId) => {
+    e.stopPropagation();
+    setIdCourse(courseId);
+    dispatch(startUpdateLesson({ ...lesson, courseID: courseId }));
+    setEditPopup(true);
+  };
+
+  const handleDeleteLesson = (id) => {
+    deleteLesson(id)
+      .then((res) => {
+        console.log({ res });
+        toast("Delete successful");
+      })
+      .catch((err) => toast(err.message));
+  };
+
+  const handleDeleteCourse = (id) => {
+    deleteCourse(id)
+      .then((res) => {
+        console.log({ res });
+        toast("Delete course successful");
+      })
+      .catch((err) => toast(err.message));
+  };
+
+  const [idCourse, setIdCourse] = useState(null);
+  const handleLessCreatePopup = (id) => {
+    setOpenLessonPopup(true);
+    setIdCourse(id);
   };
 
   return (
@@ -94,7 +140,10 @@ export default function TableData() {
                         >
                           Edit
                         </li>
-                        <li className="cursor-pointer hover:bg-opacity-50 hover:bg-red-200 rounded-b-lg">
+                        <li
+                          onClick={(e) => handleDeleteCourse(val.id)}
+                          className="cursor-pointer hover:bg-opacity-50 hover:bg-red-200 rounded-b-lg"
+                        >
                           Delete
                         </li>
                       </ul>
@@ -104,7 +153,10 @@ export default function TableData() {
                     <>
                       <tr className="border-b border-gray-400 h-14 rounded-xl">
                         <td colSpan={7} className="h-10 rounded-xl text-center">
-                          <button className="w-full bg-green-400 rounded-lg h-10 text-white font-semibold hover:bg-green-500">
+                          <button
+                            onClick={() => handleLessCreatePopup(val.id)}
+                            className="w-full bg-green-400 rounded-lg h-10 text-white font-semibold hover:bg-green-500"
+                          >
                             Create lesson
                           </button>
                         </td>
@@ -138,10 +190,18 @@ export default function TableData() {
                               </a>
                             </td>
                             <td className="px-4 flex h-full items-center justify-center pt-2 gap-4">
-                              <button className="flex items-center justify-center bg-yellow-200 hover:bg-opacity-70 h-6 w-6 rounded-full">
+                              <button
+                                onClick={(e) =>
+                                  handleEditPopUp(e, lesson, val.id)
+                                }
+                                className="flex items-center justify-center bg-yellow-200 hover:bg-opacity-70 h-6 w-6 rounded-full"
+                              >
                                 <CiEdit />
                               </button>
-                              <button className="flex items-center justify-center bg-red-400 hover:bg-opacity-70 h-6 w-6 rounded-full">
+                              <button
+                                onClick={() => handleDeleteLesson(lesson.id)}
+                                className="flex items-center justify-center bg-red-400 hover:bg-opacity-70 h-6 w-6 rounded-full"
+                              >
                                 <FaX className="text-white text-[10px]" />
                               </button>
                             </td>
@@ -154,7 +214,10 @@ export default function TableData() {
                     <>
                       <tr className="border-b border-gray-400 h-14 rounded-xl">
                         <td colSpan={7} className="h-10 rounded-xl text-center">
-                          <button className="w-full bg-green-400 rounded-lg h-10 text-white font-semibold hover:bg-green-500">
+                          <button
+                            onClick={() => handleLessCreatePopup(val.id)}
+                            className="w-full bg-green-400 rounded-lg h-10 text-white font-semibold hover:bg-green-500"
+                          >
                             Create lesson
                           </button>
                         </td>
@@ -177,6 +240,14 @@ export default function TableData() {
               <td>Loading...</td>
             </tr>
           )}
+
+          {data.data.length === 0 && (
+            <tr className="h-20 text-center">
+              <td colSpan={7} className="text-xl ">
+                No course available
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
@@ -184,7 +255,35 @@ export default function TableData() {
       {openPopup ? (
         <Popup
           closePopup={setOpenPopup}
-          children={<FormCreateCourse isCreate={false} />}
+          children={
+            <FormCreateCourse fnClosePopup={setOpenPopup} isCreate={false} />
+          }
+        />
+      ) : null}
+
+      {editPopup ? (
+        <Popup
+          closePopup={setEditPopup}
+          children={
+            <FormCreateLesson
+              courseId={idCourse}
+              fnClosePopup={setEditPopup}
+              isCreate={false}
+            />
+          }
+        />
+      ) : null}
+
+      {openLessonPopup ? (
+        <Popup
+          closePopup={setOpenLessonPopup}
+          children={
+            <FormCreateLesson
+              fnClosePopup={setOpenLessonPopup}
+              isCreate={true}
+              courseId={idCourse}
+            />
+          }
         />
       ) : null}
     </>
