@@ -24,15 +24,13 @@ const arrayTitle = [
   "Option",
 ];
 
-export default function TableData({ pagination }) {
+export default function TableData({ data, isFetching }) {
   const [openOption, setOpenOption] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
   const [showLesson, setShowLesson] = useState(null);
 
   const [openLessonPopup, setOpenLessonPopup] = useState(false);
-
-  const { data, isFetching } = useGetCourseQuery(pagination);
 
   const [deleteLesson] = useDeleteLessonMutation();
   const [deleteCourse] = useDeleteCourseMutation();

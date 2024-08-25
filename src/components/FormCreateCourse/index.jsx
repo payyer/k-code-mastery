@@ -21,7 +21,6 @@ export default function FormCreateCourse({ isCreate, fnClosePopup }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log({ data });
     if (isCreate) {
       addCourse({ ...data, category_id: data.categoryId }).then((res) => {
         toast.success("Create successful!", 1000);
