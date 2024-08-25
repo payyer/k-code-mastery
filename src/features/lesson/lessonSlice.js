@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    lessonUpdate: null
+    lessonUpdate: null,
+    getLessonById: null
 };
 
 export const lessonSlice = createSlice({
@@ -14,10 +15,16 @@ export const lessonSlice = createSlice({
         finishUpdateLesson: (state, action) => {
             state.lessonUpdate = null
         },
+        getDetailLesson: (state, action) => {
+            state.getLessonById = action.payload
+        },
+        increaseLesson: (state) => {
+            state.getLessonById = ++state.getLessonById
+        }
     },
 });
 
-export const { startUpdateLesson, finishUpdateLesson } = lessonSlice.actions;
+export const { startUpdateLesson, finishUpdateLesson, getDetailLesson, increaseLesson } = lessonSlice.actions;
 
 const lessonReducer = lessonSlice.reducer;
 export default lessonReducer;

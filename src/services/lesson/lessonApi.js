@@ -2,6 +2,9 @@ import { apiSlice } from "../apiSlice";
 
 export const lessonApi = apiSlice.injectEndpoints({
     endpoints: builder => ({
+        getDetailLesson: builder.query({
+            query: (id) => `lesson/${id}`,
+        }),
         editLesson: builder.mutation({
             query: (data) => {
                 console.log({ data })
@@ -34,4 +37,4 @@ export const lessonApi = apiSlice.injectEndpoints({
         })
     })
 })
-export const { useEditLessonMutation, useAddLessonMutation, useDeleteLessonMutation } = lessonApi
+export const { useEditLessonMutation, useAddLessonMutation, useDeleteLessonMutation, useGetDetailLessonQuery } = lessonApi
