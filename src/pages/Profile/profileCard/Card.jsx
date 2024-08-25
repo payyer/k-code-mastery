@@ -23,10 +23,10 @@ export default function Card({ setActiveTab }) {
               <img src={svgUserEdit} alt="" class="icon-edit" />
               <p>Edit your profile</p>
             </div>
-            <div className="flex gap-1 justify-start items-center cursor-pointer">
+            {/* <div className="flex gap-1 justify-start items-center cursor-pointer">
               <img src={svgUserEdit} alt="" class="icon-edit" />
               <p>Change password</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="bg-[#ffffff4a] rounded-2xl py-4 px-5 text-xl flex gap-2 cursor-pointer hover:bg-cyan-600 hover:ring-sky-500">

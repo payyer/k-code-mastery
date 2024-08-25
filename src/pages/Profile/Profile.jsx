@@ -6,7 +6,7 @@ import PanelActiveCourse from "./panelActive/PanelActiveCourse";
 export default function Profile() {
   const [activeTab, setActiveTab] = useState(true);
   return (
-    <div className="grid w-full grid-cols-[1fr_2.5fr]">
+    <div className="grid w-full grid-cols-1 sm:grid-cols-[1fr_2.5fr] gap-4">
       <Card setActiveTab={setActiveTab} />
       {!activeTab && <PanelActiveEdit setActiveTab={setActiveTab} />}
       {activeTab && <PanelActiveCourse />}
