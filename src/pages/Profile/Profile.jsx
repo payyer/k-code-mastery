@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import PanelActiveEdit from "./panelActive/PanelActiveEdit";
 import Card from "./profileCard/Card";
 import PanelActiveCourse from "./panelActive/PanelActiveCourse";

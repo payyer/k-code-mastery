@@ -10,13 +10,17 @@ export default function Register() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
-
   const handleSubmit = () => {
     if (!userName || !userEmail || !userPassword)
       return setError("Please fill all fields");
-    signUpUser({ username: userName, email: userEmail, password: userPassword })
+    signUpUser({
+      username: userName,
+      email: userEmail,
+      password: userPassword,
+      avatar: "avatar",
+    })
       .then((res) => {
-        console.log({ res });
+        console.log("res", { res });
       })
       .catch((err) => {
         console.log(err);

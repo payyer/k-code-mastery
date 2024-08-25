@@ -312,7 +312,7 @@ body {
     padding: 8px;
   }
 
-  .grid-container {
+  .gridContainer {
     grid-template-columns: repeat(2, 1fr);
   }
 

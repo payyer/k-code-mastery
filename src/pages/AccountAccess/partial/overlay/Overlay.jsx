@@ -39,7 +39,7 @@ export default function Overlay({ togglePanelRegistLogin }) {
                 togglePanelRegistLogin();
               }}
             >
-              Register
+              Register 1
             </button>
           </div>
         </div>

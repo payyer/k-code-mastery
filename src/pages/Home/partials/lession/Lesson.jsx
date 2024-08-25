@@ -1,26 +1,23 @@
 import React from "react";
-import pythonIntro from "../../../../assets/lesson/python-intro.png";
-import creatorImage from "../../../../assets/img/creator/creator.png";
 import lessonSmall from "../../../../assets/icon/lesson-small.svg";
 import styles from "../../styleHome.module.css";
 import cls from "classnames";
-export default function HomeLesson() {
+export default function HomeLesson({ lessonData }) {
   return (
     <div>
       <div className={styles.courseItem}>
         <div>
           <div className={styles.lesson}>
-            <img src={pythonIntro} alt="" />
+            <img src={lessonData.image} />
             <div className={styles.gradiant}></div>
           </div>
-          <div className={styles.title}> Introduction to Python</div>
+          <div className={styles.title}>{lessonData.title}</div>
         </div>
         <div className={styles.content}>
-          <div className={styles.creator}>
-            <img src={creatorImage} alt="" />
+          <div className="flex flex-col ">
             <div>
               <p className={styles.smallText}>Creator</p>
-              <p>Coddy</p>
+              <p>{lessonData.lecturer}</p>
             </div>
           </div>
           <p className={styles.overflowWrap}>
