@@ -1,50 +1,43 @@
-import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaCameraRetro } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import createFileList from "../../utils/createFile";
+import { useGetCategoryQuery } from "../../services/category/categoryApi";
+import {
+  useAddCourseMutation,
+  useEditCourseMutation,
+} from "../../services/course/courseApi";
+import { toast } from "react-toastify";
 
-export default function FormCreateCourse({ isCreate }) {
+export default function FormCreateCourse({ isCreate, fnClosePopup }) {
   const courseToUpdate = useSelector((state) => state.course.courseUpdate);
-  console.log({ courseToUpdate });
+  const { data: categoryData } = useGetCategoryQuery();
+
+  const [editCourse] = useEditCourseMutation();
+  const [addCourse] = useAddCourseMutation();
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-    setValue,
   } = useForm();
-
-  useEffect(() => {
-    (async () => {
-      const response = await createFileList([courseToUpdate?.image]);
-      setValue("image", response);
-    })();
-  }, [courseToUpdate]);
 
   const onSubmit = (data) => {
     console.log({ data });
-    if (isCreate) return console.log({ dataCreate: data });
+    if (isCreate) {
+      addCourse({ ...data, category_id: data.categoryId }).then((res) => {
+        toast.success("Create successful!", 1000);
+        fnClosePopup(false);
+      });
+      return;
+    }
+    editCourse({ id: courseToUpdate.id, body: data })
+      .then((res) => {
+        console.log({ res });
+        toast("Update course successful!");
+        fnClosePopup(false);
+      })
+      .catch((err) => toast.error("Something wrong?"));
     return console.log({ dataUpdate: data });
   };
-
-  // Handle Image Preview
-  const watchImage = watch("image");
-
-  const imagePreview = useMemo(() => {
-    if (watchImage && watchImage.length > 0) {
-      return window.URL.createObjectURL(watchImage[0]);
-    }
-    return null;
-  }, [watchImage]);
-
-  useEffect(() => {
-    return () => {
-      if (imagePreview) {
-        URL.revokeObjectURL(imagePreview);
-      }
-    };
-  }, [imagePreview]);
 
   return (
     <div
@@ -55,47 +48,27 @@ export default function FormCreateCourse({ isCreate }) {
         {isCreate ? "Create course" : "Update course"}
       </h3>
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-        <div className="w-full h-[160px] relative">
-          {courseToUpdate ? (
-            <img
-              src={imagePreview ? imagePreview : courseToUpdate.image}
-              alt=""
-              className="w-full h-full object-contain"
-            />
-          ) : (
-            <img
-              src={
-                imagePreview
-                  ? imagePreview
-                  : "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-              }
-              alt=""
-              className="w-full h-full object-contain"
-            />
-          )}
-
-          <label htmlFor="image" className="absolute top-0 right-0 font-medium">
-            <FaCameraRetro className="opacity-70 hover:opacity-100 text-xl cursor-pointer" />
-          </label>
-        </div>
-
-        {errors.image && (
-          <span className="text-red-500">{errors.image.message}</span>
-        )}
+        <label htmlFor="image" className="font-medium">
+          Image
+        </label>
         <input
-          type="file"
+          defaultValue={courseToUpdate ? courseToUpdate.image : ""}
+          type="text"
           id="image"
-          className="hidden p-2 border border-gray-400 focus:outline-primary rounded-lg"
+          className=" p-2 border border-gray-400 focus:outline-primary rounded-lg"
           {...register("image", {
             required: "Empty image",
           })}
         />
+        {errors.image && (
+          <span className="text-red-500">{errors.image.message}</span>
+        )}
 
         <label htmlFor="category" className="font-medium">
           Category
         </label>
         <select
-          defaultValue={courseToUpdate ? courseToUpdate.categoryDTO.name : ""}
+          defaultValue={courseToUpdate ? courseToUpdate.categoryDTO.id : ""}
           className="p-2 border border-gray-400 focus:outline-primary rounded-lg"
           id="category"
           {...register("categoryId", {
@@ -107,8 +80,13 @@ export default function FormCreateCourse({ isCreate }) {
           })}
         >
           <option value="">Select a category</option>
-          <option value="Java">Java</option>
-          <option value="java">Java</option>
+          {categoryData.data.map((item) => {
+            return (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
         </select>
         {errors.categoryId && (
           <span className="text-red-500">{errors.categoryId.message}</span>
@@ -173,6 +151,23 @@ export default function FormCreateCourse({ isCreate }) {
           <span className="text-red-500">{errors.description.message}</span>
         )}
 
+        {!isCreate && (
+          <>
+            <input
+              type="text"
+              className="hidden"
+              value={0}
+              {...register("isFree")}
+            />
+
+            <input
+              type="text"
+              className="hidden"
+              value={0}
+              {...register("isPublic")}
+            />
+          </>
+        )}
         <input
           autoComplete="off"
           type="submit"

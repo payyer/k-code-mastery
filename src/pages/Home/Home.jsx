@@ -1,12 +1,17 @@
-// import "./style.css";
 import HomeNavBar from "./partials/navbar/Navbar";
 import HomeTabList from "./partials/tablist/Tab";
 import cls from "classnames";
 import styleHome from "./styleHome.module.css";
 import HomeLesson from "./partials/lession/Lesson";
 import { useGetCourseQuery } from "../../services/course/courseApi";
+import { useState } from "react";
 export default function Home() {
-  const { data, isFetching } = useGetCourseQuery();
+  const [pagination, setPagination] = useState({
+    searchByName: "",
+    page: 1,
+    limit: 10,
+  });
+  const { data, isFetching } = useGetCourseQuery(pagination);
   return (
     <div>
       <div className={styleHome.relative}>

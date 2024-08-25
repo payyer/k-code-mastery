@@ -1,10 +1,17 @@
 import { IoChevronBackOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { increaseLesson } from "../../../features/lesson/lessonSlice";
 
-export default function LessonHeader() {
+export default function LessonHeader({ name }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleBackToHome = () => {
     navigate("/");
+  };
+
+  const nextLesson = () => {
+    dispatch(increaseLesson());
   };
   return (
     <div className="h-lesson-nav-h border border-black flex items-center justify-between px-4">
@@ -22,13 +29,16 @@ export default function LessonHeader() {
           />
         </div>
         {/* Course Title */}
-        <p className="text-xl font-medium">Javascrip Fundamental</p>
+        <p className="text-xl font-medium">{name}</p>
       </div>
 
-      <div className="flex gap-4">
-        <div>193/255 Lessons</div>
-        <btn className="py-1 px-2 bg-primary text-white font-medium rounded-lg hover:bg-opacity-70 select-none cursor-pointer">
-          Submit
+      <div className="flex gap-4 items-center">
+        {/* <div>193/255 Lessons</div> */}
+        <btn
+          onClick={nextLesson}
+          className="py-1 px-2 bg-primary text-white font-medium rounded-lg hover:bg-opacity-70 select-none cursor-pointer"
+        >
+          Next
         </btn>
       </div>
     </div>

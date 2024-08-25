@@ -20,3 +20,9 @@ export function formatDate(dateString) {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat("vi-VN").format(date);
 }
+
+export function filterValue(data, searchValue) {
+  return data.filter((item) =>
+    item.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+}

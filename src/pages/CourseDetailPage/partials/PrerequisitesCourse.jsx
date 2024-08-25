@@ -1,4 +1,4 @@
-export default function PrerequisitesCourse() {
+export default function PrerequisitesCourse({ price }) {
   return (
     <div className="p-6 bg-white rounded-xl flex flex-col gap-2">
       <h3 className="text-lg font-bold">Prerequisites</h3>
@@ -9,7 +9,7 @@ export default function PrerequisitesCourse() {
         </li>
       </ul>
       <button className="flex items-center justify-center py-2 bg-primary rounded-lg text-white font-bold shadow-shadow-b hover:bg-opacity-90">
-        BUY NOW 489.000$
+        {price === 0 ? "IS FREE NOW!" : `BUY NOW ${price}$`}
       </button>
     </div>
   );
