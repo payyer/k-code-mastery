@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import svgBack from "../../../assets/icon/back-svg.svg";
 import svgUserImage from "../../../assets/profile/user_placeholder.svg";
 export default function PanelActiveEdit({ setActiveTab }) {
-  let userName = "Ngo Thanh Y";
-  const [changName, setChangName] = useState(userName);
+  const [changName, setChangName] = useState("");
   const [error, setError] = useState("");
   const submitForm = (e) => {
     e.preventDefault();

@@ -63,7 +63,7 @@ export default function Register() {
             onChange={(e) => setUserPassword(e.target.value)}
           />
           <button className={cls(styles.button, styles.btn)}>Register</button>
-          <span>or use your account</span>
+          <span className="span">or use your account</span>
         </form>
       </div>
     </div>

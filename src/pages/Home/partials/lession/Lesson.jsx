@@ -3,6 +3,7 @@ import lessonSmall from "../../../../assets/icon/lesson-small.svg";
 import styles from "../../styleHome.module.css";
 import cls from "classnames";
 export default function HomeLesson({ lessonData }) {
+  console.log("lesson data", lessonData);
   return (
     <div>
       <div className={styles.courseItem}>
@@ -20,17 +21,17 @@ export default function HomeLesson({ lessonData }) {
               <p>{lessonData.lecturer}</p>
             </div>
           </div>
-          <p className={styles.overflowWrap}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas animi
-            deleniti ad dolorem repudiandae adipisci natus odio. Cupiditate
-            quidem maxime cum temporibus quas porro perspiciatis optio quisquam,
-            enim magni dignissimos?
-          </p>
+          <p className={styles.overflowWrap}>{lessonData.description}</p>
           <div className={styles.overflowWrap}>
             <div>
               <div className={cls(styles.flex)}>
                 <img src={lessonSmall} alt="" />
-                <p className={styles.borderSmallIcon}> 18 Lesson</p>
+                <p className={styles.borderSmallIcon}>
+                  {" "}
+                  {lessonData.lessonDTOs === null
+                    ? "0"
+                    : lessonData.lessonDTOs?.length}
+                </p>
               </div>
             </div>
           </div>

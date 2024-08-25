@@ -20,16 +20,15 @@ export const accessApi = apiSlice.injectEndpoints({
         };
       },
     }),
-    loadProfile: builder.mutation({
-      query: (body, userId) => {
+    loadProfile: builder.query({
+      query: (userId) => {
         return {
           url: `user/${userId}`,
-          method: "POST",
-          body,
+          method: "GET",
         };
       },
     }),
   }),
 });
-export const { useSignUpMutation, useSignInMutation, useLoadProfileMutation } =
+export const { useSignUpMutation, useSignInMutation, useLoadProfileQuery } =
   accessApi;
