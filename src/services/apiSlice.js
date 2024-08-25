@@ -1,9 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "https://ductandev.io.vn/api/",
-    credentials: 'include',
-})
+  baseUrl: "https://ductandev.io.vn/api/",
+  credentials: "include",
+});
 
 export const apiSlice = createApi({
     baseQuery: baseQuery,

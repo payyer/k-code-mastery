@@ -6,7 +6,7 @@ import cls from "classnames";
 export default function HomeAvatar() {
   // Đổi tên `onclick` thành `onClick` cho chuẩn React
   const [isOpen, setIsOpen] = useState(false); // Sửa tên hàm thành `setIsOpen` và giá trị mặc định là `false`
-
+  let userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
   function handleAvatar() {
     setIsOpen(!isOpen); // Đổi trạng thái isOpen khi nhấn vào avatar
   }
@@ -18,7 +18,9 @@ export default function HomeAvatar() {
       >
         {" "}
         {/* Đổi class thành className */}
-        <img src={avatar} alt="avatar" className={styles.avatar} />
+        {userInfo && (
+          <img src={avatar} alt="avatar" className={styles.avatar} />
+        )}
         {isOpen && ( // Render menu chỉ khi `isOpen` là true
           <HomeUserActionMenu />
         )}
