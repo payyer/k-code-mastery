@@ -35,7 +35,7 @@ p .pagarap {
   margin: 20px 0 30px;
   text-shadow: 0 0 10px rgb(16, 64, 74, 0.5);
 }
-span {
+.span {
   font-size: 14px;
   margin-top: 25px;
 }
@@ -121,17 +121,6 @@ a:hover {
 .button.ghost:hover i.login {
   left: 40px;
   opacity: 1;
-}
-form {
-  background-color: #fff;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
 }
 .formContainer input {
   background-color: #eee;

@@ -1,4 +1,3 @@
-// import "./style.css";
 import HomeNavBar from "./partials/navbar/Navbar";
 import HomeTabList from "./partials/tablist/Tab";
 import cls from "classnames";
