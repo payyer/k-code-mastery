@@ -70,7 +70,7 @@ export default function TableCategory() {
           {!searchValue && (
             <>
               {!isFetching ? (
-                data.data?.map((val, index) => {
+                data?.data?.map((val, index) => {
                   return (
                     <Fragment key={val.id}>
                       <tr

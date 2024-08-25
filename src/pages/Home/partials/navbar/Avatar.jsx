@@ -16,7 +16,6 @@ export default function HomeAvatar() {
         className={cls(styles.avatarUser, styles.relative)}
         onClick={handleAvatar}
       >
-        {" "}
         {/* Đổi class thành className */}
         {userInfo && (
           <img src={avatar} alt="avatar" className={styles.avatar} />

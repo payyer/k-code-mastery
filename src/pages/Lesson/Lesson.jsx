@@ -3,12 +3,12 @@ import { useGetDetailLessonQuery } from "../../services/lesson/lessonApi";
 import LessonContent from "./partials/LessonContent";
 import LessonHeader from "./partials/LessonHeader";
 import ListLesson from "./partials/ListLesson";
+import { useParams } from "react-router-dom";
 
 export default function Lesson() {
-  const lessonId = useSelector((state) => state.lesson.getLessonById);
-  const { data, isFetching } = useGetDetailLessonQuery(
-    lessonId ? lessonId : 42
-  );
+  const lessonParams = useParams();
+  // const lessonId = useSelector((state) => state.lesson.getLessonById);
+  const { data, isFetching } = useGetDetailLessonQuery(lessonParams.id);
 
   return (
     <>

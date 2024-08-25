@@ -8,7 +8,7 @@ import Profile from "../pages/Profile/Profile";
 const linkPage = [
   { link: "/", element: <Home /> },
   { link: "/course/:id", element: <CourseDetail /> },
-  { link: "/lesson", element: <Lesson /> },
+  { link: "/lesson/:courseId/:id", element: <Lesson /> },
   { link: "/admin", element: <Admin /> },
   { link: "/account", element: <AccountAccess /> },
   { link: "/profile", element: <Profile /> },

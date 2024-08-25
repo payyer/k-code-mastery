@@ -1,5 +1,5 @@
 import React from "react";
-import HomeSearch from "../navbar/Search";
+// import HomeSearch from "../navbar/Search";
 import HomeLogo from "../navbar/Logo";
 import HomeAvatar from "../navbar/Avatar";
 import styleHome from "../../styleHome.module.css";
@@ -10,7 +10,7 @@ export default function HomeNavBar() {
     <div>
       <div className={styleHome.navBar}>
         <HomeLogo />
-        <HomeSearch />
+        {/* <HomeSearch /> */}
         {userInfo && <HomeAvatar />}
         {!userInfo && <ButtonLogin />}
       </div>

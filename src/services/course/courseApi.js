@@ -45,6 +45,16 @@ export const courseApi = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["course"],
     }),
+    addCourseForUser: builder.mutation({
+      query: (body) => {
+        return {
+          url: `user-courses`,
+          method: "POST",
+          body
+        };
+      },
+    }),
+
   }),
 });
 export const {
@@ -53,4 +63,5 @@ export const {
   useEditCourseMutation,
   useDeleteCourseMutation,
   useGetDetailCourseQuery,
+  useAddCourseForUserMutation
 } = courseApi;

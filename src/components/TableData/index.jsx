@@ -103,7 +103,7 @@ export default function TableData({ data, isFetching }) {
 
         <tbody>
           {!isFetching ? (
-            data.data?.map((val, index) => {
+            data?.data?.map((val, index) => {
               return (
                 <Fragment key={val.id}>
                   <tr
