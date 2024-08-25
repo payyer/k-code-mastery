@@ -2,10 +2,13 @@ import React from "react";
 import lessonSmall from "../../../../assets/icon/lesson-small.svg";
 import styles from "../../styleHome.module.css";
 import cls from "classnames";
+import { useNavigate } from "react-router-dom";
 export default function HomeLesson({ lessonData }) {
+  const navigate = useNavigate();
+
   console.log("lesson data", lessonData);
   return (
-    <div>
+    <div onClick={() => navigate(`course/${lessonData.id}`)}>
       <div className={styles.courseItem}>
         <div>
           <div className={styles.lesson}>

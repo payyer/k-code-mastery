@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
 import { useGetDetailCourseQuery } from "../../services/course/courseApi";
 import InfoCourse from "./partials/InfoCourse";
 
 export default function CrouseDetail() {
-  const { data, isFetching } = useGetDetailCourseQuery(49);
+  const courseId = useParams();
+  console.log({ courseId });
+  const { data, isFetching } = useGetDetailCourseQuery(courseId.id);
 
   return (
     <>

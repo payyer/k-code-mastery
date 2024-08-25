@@ -12,7 +12,10 @@ export default function InfoCourse({ data }) {
           title={data?.title}
           countLesson={data?.lessonDTOs.length}
         />
-        <PrerequisitesCourse price={data?.price} />
+        <PrerequisitesCourse
+          lessonId={data?.lessonDTOs[0].id}
+          price={data?.price}
+        />
         <ListLesson listLesson={data?.lessonDTOs} />
       </div>
     </div>

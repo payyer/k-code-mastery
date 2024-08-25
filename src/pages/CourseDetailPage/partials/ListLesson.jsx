@@ -1,8 +1,6 @@
 import _ from "lodash";
 export default function ListLesson({ listLesson }) {
-  console.log({ listLesson });
   const chunkedArray = _.chunk(listLesson, listLesson.length / 2);
-  console.log({ chunkedArray });
 
   return (
     <div className="relative md:col-span-2">

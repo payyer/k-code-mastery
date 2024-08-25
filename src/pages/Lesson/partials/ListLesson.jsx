@@ -1,10 +1,12 @@
 import React from "react";
 import LessonItem from "./LessonItem";
 import { useGetDetailCourseQuery } from "../../../services/course/courseApi";
+import { useParams } from "react-router-dom";
 
 export default function ListLesson() {
   // Truyền vào bao nhiêu thì nhận để load list Lesson
-  const { data, isFetching } = useGetDetailCourseQuery(49);
+  const paramsId = useParams();
+  const { data, isFetching } = useGetDetailCourseQuery(paramsId.courseId);
   return (
     <>
       {!isFetching ? (

@@ -10,15 +10,17 @@ export default function Home() {
     searchByName: "",
     page: 1,
     limit: 10,
+    categoryID: "",
   });
   const { data, isFetching } = useGetCourseQuery(pagination);
+
   return (
     <div>
       <div className={styleHome.relative}>
         <HomeNavBar />
       </div>
       <nav className={cls(styleHome.main, styleHome.container)}>
-        <HomeTabList />
+        <HomeTabList pagination={pagination} setPagination={setPagination} />
         <div className={styleHome.mainLesson}>
           <div className={styleHome.bigTitle}>Popular this week</div>
           <div className={styleHome.gridContainer}>

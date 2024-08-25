@@ -2,16 +2,17 @@ import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaRegCircle } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDetailLesson } from "../../../features/lesson/lessonSlice";
 
 export default function LessonItem({ id, title }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const paramsId = useParams();
 
   const handleChangeLesson = () => {
     dispatch(getDetailLesson(id));
-    // navigate(`/lesson/${id}`);
+    navigate(`/lesson/${paramsId.courseId}/${id}`);
   };
   return (
     <div
