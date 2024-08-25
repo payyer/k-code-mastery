@@ -6,32 +6,49 @@ import Popup from "../../../../components/Popup";
 import { FaPlus } from "react-icons/fa";
 import { useGetCategoryQuery } from "../../../../services/category/categoryApi";
 import { useSelector } from "react-redux";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useGetCourseQuery } from "../../../../services/course/courseApi";
 
 export default function TabCourse() {
   const [openCreate, setOpenCreate] = useState(false);
-  const { data: categoryList } = useGetCategoryQuery();
-  const searchValueCourse = useSelector(
-    (state) => state.course.searchValueCourse
-  );
-  console.log({ searchValueCourse });
-
   const [pagination, setPagination] = useState({
     searchByName: "",
     page: 1,
-    limit: 10,
+    limit: 3,
   });
 
-  console.log({ pagination });
+  const [pageList, setPageList] = useState(0);
+
+  const { data, isFetching } = useGetCourseQuery(pagination);
+  const { data: categoryList } = useGetCategoryQuery();
+
+  const searchValueCourse = useSelector(
+    (state) => state.course.searchValueCourse
+  );
+
+  console.log({ data });
   const handlePagination = (e) => {
-    setPagination({ ...pagination, categoryID: e.target.value });
+    setPagination({ ...pagination, categoryID: e.target.value, page: 1 });
+  };
+  const handlePageClick = (pageNum) => {
+    setPagination((prev) => ({
+      ...prev,
+      page: pageNum,
+    }));
   };
 
   useEffect(() => {
-    if (searchValueCourse) {
-      setPagination({ ...pagination, searchByName: searchValueCourse });
-    } else {
-      setPagination({ ...pagination, searchByName: "" });
+    if (data && data.total && data.limit) {
+      setPageList(Math.ceil(data.total / data.limit));
     }
+  }, [data, pagination, searchValueCourse]);
+
+  useEffect(() => {
+    setPagination((prev) => ({
+      ...prev,
+      searchByName: searchValueCourse,
+      page: 1,
+    }));
   }, [searchValueCourse]);
 
   return (
@@ -66,7 +83,29 @@ export default function TabCourse() {
           })}
         </select>
 
-        <TableData pagination={pagination} />
+        <TableData data={data} isFetching={isFetching} />
+
+        <div className="w-full flex justify-end gap-2 mt-4">
+          <button className="bg-white border border-primary rounded-md p-1">
+            <IoIosArrowBack className="text-2xl" />
+          </button>
+          {Array.from({ length: pageList }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageClick(index + 1)}
+              className={`${
+                pagination.page === index + 1
+                  ? "bg-primary text-white"
+                  : "bg-white text-primary"
+              } border border-primary rounded-md p-1 px-3`}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button className="bg-white border border-primary rounded-md p-1">
+            <IoIosArrowForward className="text-2xl" />
+          </button>
+        </div>
       </div>
       {openCreate ? (
         <Popup
