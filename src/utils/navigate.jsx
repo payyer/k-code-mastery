@@ -7,7 +7,7 @@ import AccountAccess from "../pages/AccountAccess/AccountAccess";
 const linkPage = [
   { link: "/", element: <Home /> },
   { link: "/course/:id", element: <CourseDetail /> },
-  { link: "/lesson/:id", element: <Lesson /> },
+  { link: "/lesson", element: <Lesson /> },
   { link: "/admin", element: <Admin /> },
   { link: "/account", element: <AccountAccess /> },
 ];
