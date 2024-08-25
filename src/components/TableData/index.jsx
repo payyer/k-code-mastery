@@ -241,7 +241,7 @@ export default function TableData({ pagination }) {
             </tr>
           )}
 
-          {data.data.length === 0 && (
+          {data?.data?.length === 0 && (
             <tr className="h-20 text-center">
               <td colSpan={7} className="text-xl ">
                 No course available
