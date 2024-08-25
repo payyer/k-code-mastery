@@ -1,7 +1,12 @@
 import React from "react";
 import { MdOutlinePlayLesson } from "react-icons/md";
 
-export default function CourseDescription() {
+export default function CourseDescription({
+  lecturer,
+  title,
+  description,
+  countLesson,
+}) {
   return (
     <div className="text-white px-4 flex flex-col gap-4">
       {/* Creator Info */}
@@ -15,20 +20,17 @@ export default function CourseDescription() {
         </div>
         <div className="flex flex-col justify-center">
           <div className="text-sm">Creator</div>
-          <div className="font-medium">Admin</div>
+          <div className="font-medium">{lecturer}</div>
         </div>
       </div>
 
-      <h3 className="text-4xl font-medium">Introduction to Python</h3>
+      <h3 className="text-4xl font-medium">{title}</h3>
 
-      <p className="text-lg">
-        In this course, you will learn the basics of Python programming language
-        for total beginners.
-      </p>
+      <p className="text-lg">{description}</p>
 
       <span className="flex items-center gap-2 select-none ">
         <span className=" bg-secondary flex gap-2 items-center py-2 px-3  rounded-2xl">
-          <MdOutlinePlayLesson /> 42 Lesson
+          <MdOutlinePlayLesson /> {countLesson} Lesson
         </span>
       </span>
     </div>
