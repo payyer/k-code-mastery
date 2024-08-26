@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetDetailCourseQuery } from "../../services/course/courseApi";
 import InfoCourse from "./partials/InfoCourse";
+import HomeNavBar from "../Home/partials/navbar/Navbar";
 
 export default function CrouseDetail() {
   const courseId = useParams();
@@ -9,8 +10,9 @@ export default function CrouseDetail() {
 
   return (
     <>
+      <HomeNavBar />
       {!isFetching ? (
-        <div className="relative h-[468px] w-full">
+        <div className="relative h-[468px] w-full mt-[50px] lg::mt-[60px] ">
           <img
             src={data?.data?.image}
             alt="crouse-theme"

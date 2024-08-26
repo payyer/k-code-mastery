@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useGetDetailLessonQuery } from "../../services/lesson/lessonApi";
 import LessonContent from "./partials/LessonContent";
 import LessonHeader from "./partials/LessonHeader";
