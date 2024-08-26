@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 export default function HomeLesson({ lessonData }) {
   const navigate = useNavigate();
 
-  console.log("lesson data", lessonData);
   return (
     <div onClick={() => navigate(`course/${lessonData.id}`)}>
       <div className={styles.courseItem}>

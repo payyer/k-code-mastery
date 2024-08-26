@@ -32,7 +32,7 @@ export default function Login() {
       if (res.data.statusCode === 200) {
         console.log("Login successful:", res.data);
         localStorage.setItem("USER_INFO", JSON.stringify(res.data)); // Lưu thông tin người dùng vào local storage
-
+        if (res?.data?.data.role == 1) return navigate("/admin");
         navigate("/"); // Điều hướng đến trang khác
       } else {
         console.error("Failed to login:", res.data.errorMessage);
